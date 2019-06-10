@@ -1,0 +1,86 @@
+@-moz-document domain("github.com") {
+/* My own; MIT licensed. */
+.blob-code {
+    font-family: "Hack", "Roboto Mono", monospace !important;
+    line-height: 9pt !important; 
+}
+
+.blob-code-inner {
+    font-size: 9pt !important;    
+}
+
+.blob-num {
+    line-height: 9.5pt !important; 
+    font-size: 9pt !important;    
+    font-family: "Hack", "Roboto Mono", monospace !important;
+}
+
+.add-line-comment {
+    height: 16px;
+    line-height: 100%;
+}
+
+svg.octicon {
+    height: 16px; /* line-marking icons must fit the box.*/
+}
+
+/* input box text */
+.rgh-monospace-textareas #merge_title_field, .rgh-monospace-textareas #commit-summary-input, .rgh-monospace-textareas textarea {
+    font-family: Hack, Consolas, monospaced !important;
+    font-size: 10pt;
+}
+
+/* .review-thread:not(:last-child) {
+    margin-bottom: 0;
+}
+ */
+.comment-holder {
+    max-width: 95%; 
+}
+
+.comment-body {
+    font-size: 11pt;
+}
+
+.markdown-body {
+    line-height: 1.125;
+}
+
+.markdown-body .highlight pre, 
+.markdown-body pre {
+    padding: 0.25em;
+}
+
+.markdown-body {
+    font-size: 11pt;
+    font-family: "Roboto", "DejaVu Sans", "Hack", "Tahoma", sans-serif;
+}
+
+.markdown-body blockquote, .markdown-body dl, .markdown-body ol, .markdown-body p, .markdown-body pre, .markdown-body table, .markdown-body ul {
+    margin-bottom: 6pt;
+    margin-top: 0;
+}
+
+.btn {
+    font-size: 9pt;
+    line-height: 100%;
+}
+
+.f5 { /* reviewer names*/
+    font-size: 10pt !important;
+}
+
+.discussion-item-icon {
+    width: 25px;
+    height: 25px;
+}
+
+.discussion-item-review .timeline-comment .discussion-item-icon {
+    margin-left: -7px;
+}
+
+/* Remove the limitation of wiidth for comment box */
+.comment-holder, .inline-comments .inline-comment-form, .inline-comments .inline-comment-form-container {
+    max-width: 100%;
+}
+}
