@@ -1,0 +1,51 @@
+@-moz-document url-prefix("https://news.ycombinator.com") {
+.title {
+    font-size: 11pt;
+}
+
+td.title {
+    vertical-align: text-bottom;
+}
+
+.subtext {
+    font-size: 9pt;
+}
+
+.votearrow {
+    position: relative;
+    top: 0pt;
+    width: 18pt;
+    height: 16pt;
+    background-size: 18pt;
+    opacity: 0.5;
+    background-position-y: -6pt;
+    margin-bottom: -4pt;
+}
+
+td.subtext {
+    font-size: 10pt;
+}
+}
+
+@-moz-document url-prefix("https://news.ycombinator.com/item"), url-prefix("https://news.ycombinator.com/thread") {
+span.c00 {
+    font-size: 11pt;
+}
+
+div.reply p font u {
+    font-size: 10pt;
+}
+
+.votearrow {
+    position: relative;
+    top: -4pt;
+    width: 18pt;
+    height: 18pt;
+    background-size: 18pt;
+    opacity: 0.5;
+}
+
+td.votelinks {
+    width: 18pt;
+}
+}
