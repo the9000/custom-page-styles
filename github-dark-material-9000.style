@@ -28,11 +28,11 @@ samp,
 
 /* File names use custom font. */
 .file-info {
-    font-family: "Hack", "Roboto Mono", Consolas, "Liberation Mono", Menlo, Courier, monospace !important;    
+    font-family: "Hack", "Roboto Mono", Consolas, "Liberation Mono", Menlo, Courier, monospace !important;
 }
 
 /* Base link/panel colors - text */
-a:not([href*="/labels/"]):not([class*="IssueLabel"]),   
+a:not([href*="/labels/"]):not([class*="IssueLabel"]),
 span:not([class*="IssueLabel"]) > a:not([class*="selected"]):not([class*="IssueLabel"]),
 input[type="text"]:focus + .header-search-scope,
 .plans-row .plan,
@@ -116,7 +116,7 @@ button.discussion-item-toggle-closed:hover,
 #header ul.top-nav > li > button:hover,
 .new-file-form,
 .date_selector td,
-.pagination a, 
+.pagination a,
 .pagination span,
 .pagination em,
 .timeline-comment-actions .octicon:hover,
@@ -170,7 +170,7 @@ a.text-blue,
 td.selectable-day,
 .date-selector .date-button,
 .exploregrid-item:hover .exploregrid-item-title,
-.stale-files-tab a, 
+.stale-files-tab a,
 .intgrs-lstng-item-link:hover .intgrs-lstng-item-header,
 .link-blue,
 a.link-blue,
@@ -187,6 +187,22 @@ td.icon .octicon-file-submodule,
 .pl-corl {
     color: #22aaaa !important;
 }
+
+/* Timeline items */
+.TimelineItem-badge {
+    background-color: #333;
+    color: #22aaaa;
+}
+
+.TimelineItem--condensed .TimelineItem-badge {
+    background-color: #333;
+    color: #22aaaa;
+}
+
+.TimelineItem::before {
+    background-color: #333;
+}
+
 /* Base color panel */
 
 .btn:active,
@@ -561,6 +577,17 @@ input.js-site-search-focus {
 .markdown-body strike tt {
     text-decoration: line-through !important;
 }
+
+/* Marketing lead test */
+.markdown-body .lead-mktg p {
+    color: #ccc !important;
+}
+
+/* Ext markdown bordered block. */
+.extended-markdown.note {
+    background-color: #333 !important;
+}
+
 .blame-commit + .blame-line {
     border-top: 1px solid #484848 !important;
     box-shadow: none !important;
@@ -832,6 +859,12 @@ div#dashboard.dashboard div.news div,
     background-color: #221;
 }
 
+/* Info baners with dark cyan gradient. */
+.code-navigation-banner {
+    background-color: black;
+    background-image: none;
+}
+
 .big-notice,
 .clean td,
 .legend .clean,
@@ -848,6 +881,13 @@ div#dashboard.dashboard div.news div,
     background-color: transparent !important;
     background-image: none !important;
 }
+
+/* Special case of dismissable notices */
+form.js-notice-dismiss.rounded-2.mb-4 {
+    background-color: black !important;
+    border: 1px solid #333 !important; /* FIXME: ineffectual. */
+}
+
 /* border-radius */
 
 #wrapper,
@@ -1446,7 +1486,7 @@ input.subnav-search-input,
 }
 
 .gh-header .gh-header-sticky.is-stuck + .gh-header-shadow {
-    background-color: #222222;    
+    background-color: #222222;
 }
 
 .markdown-body blockquote {  /* special left borders, not steamrolled by comment styles. */
@@ -2344,7 +2384,7 @@ ul.fieldpills li,
 .contrib-legend .legend li:first-child { /* heat=0 does not exist*/
     background-color: #4183C4 !important;
     opacity: .125 !important;
-}  
+}
 /* contribution calendar - halloween colors */
 
 .calendar-graph rect[fill="#FFEE4A"],
@@ -4671,7 +4711,7 @@ body.blog pre,
 #user-content-toc td,
 .copyable-terminal {
     /* border: 1px solid rgba(255, 255, 255, .1) !important; */
-    background-color: #111 !important; 
+    background-color: #111 !important;
     color: #8a8;
 }
 /* toc in markdown, reset border-collaps so border-radius works   */
@@ -4734,6 +4774,7 @@ a.feed-icon,
 /* git diff line additions (dark green) */
 
 .blob-code.blob-code-addition,
+.blob-code-addition,
 .blob-num.blob-num-addition,
 .prose-diff .changed ins,
 .prose-diff .changed ins code,
@@ -4743,10 +4784,11 @@ a.feed-icon,
 .prose-diff > .markdown-body ins code,
 .prose-diff > .markdown-body ins > div,
 .prose-diff > .markdown-body ins > p {
-    background: #002800 !important;
+    background-color: #002000 !important;
+    background: linear-gradient(to right, #060 0, #002000 0.75em, #002000 100%) !important;
     border-color: #060 !important;
 }
- 
+
 .blob-code.highlighted {
     background-color: #033;
 }
@@ -4758,6 +4800,7 @@ a.feed-icon,
 /* git diff line deletions (dark red) */
 
 .blob-code.blob-code-deletion,
+.blob-code-deletion,
 .blob-num.blob-num-deletion,
 .prose-diff > .markdown-body .changed del,
 .prose-diff > .markdown-body .changed del pre,
@@ -4770,7 +4813,8 @@ a.feed-icon,
 .CodeMirror-linebackground.conflict-background,
 .conflict-gutter-marker,
 .conflict-background + .CodeMirror-gutter-wrapper .CodeMirror-linenumber {
-    background: #380000 !important;
+    background-color: #280000 !important;
+    background: linear-gradient(to right, #600 0, #280000 0.75em, #280000 100%) !important;
     border-color: #600 !important;
 }
 
@@ -4813,16 +4857,20 @@ td.selected-line.blob-code {
 .prose-diff > .markdown-body td.changed {
     background: #282818 !important;
 }
+
+/* Highlights within diff. */
 .blob-code-addition .x,
 .highlight .blob-code-addition .x {
-    background: #252 !important;
+    background-color: #252 !important;
     color: #eee !important;
 }
+
 .blob-code-deletion .x,
 .highlight .blob-code-deletion .x {
     background: #622 !important;
     color: #eee !important;
 }
+
 /* git diff line numbers (med green) */
 
 .gi .diff-line-num,
@@ -5385,7 +5433,7 @@ td.d-block.comment-body {
 }
 
 .reaction-summary-item img {
-    background-color: transparent !important;    
+    background-color: transparent !important;
 }
 
 /* auto-generated rule for "border-top: 1px solid #e1e4e8" */
@@ -6626,7 +6674,7 @@ span.cm-def {
 }
 
 .border{
-    border: 0px transparent !important;	
+	border: 0px transparent !important;
 }
 
 .header {
