@@ -1,3 +1,4 @@
+@-moz-document regexp("^https?://((gist|guides|help|raw|status|developer).)?github.com((?!generated_pages/preview).)*$") {
  body {
     background-color: #141518 !important;
     background-clip: border-box !important;
@@ -30,7 +31,7 @@ samp,
 }
 
 /* Base link/panel colors - text */
-a:not([href*="/labels/"]):not([class*="IssueLabel"]),
+a:not([href*="/labels/"]):not([class*="IssueLabel"]):not([class~="btn-primary"]):not([class~="stale-files-tab-link"]),
 span:not([class*="IssueLabel"]) > a:not([class*="selected"]):not([class*="IssueLabel"]),
 input[type="text"]:focus + .header-search-scope,
 .plans-row .plan,
@@ -168,7 +169,6 @@ a.text-blue,
 td.selectable-day,
 .date-selector .date-button,
 .exploregrid-item:hover .exploregrid-item-title,
-.stale-files-tab a,
 .intgrs-lstng-item-link:hover .intgrs-lstng-item-header,
 .link-blue,
 a.link-blue,
@@ -184,6 +184,11 @@ td.icon .octicon-file-symlink-directory,
 td.icon .octicon-file-submodule,
 .pl-corl {
     color: #22aaaa !important;
+}
+
+/* Code ownnership octicon for a file owned by you. */
+span[aria-label^='You own' i] svg.octicon.octicon-shield-lock  {
+    color: #0c6633 !important;
 }
 
 /* Timeline items */
@@ -207,6 +212,12 @@ td.icon .octicon-file-submodule,
     margin-left: 64px; /* Not precise */
     border-top: dotted #444 4px !important;
 }
+
+.TimelineItem-body {  /* Non-link text inside timeline. */
+    color: #999;
+}
+
+
 
 /* Base color panel */
 
@@ -379,6 +390,7 @@ input.color-editor-input:focus,
 .intgrs-lstng-item:hover,
 .ajax-pagination-btn:focus,
 .select-menu-item:focus,
+.SelectMenu-item:focus,
 .form-control.focus,
 .form-select.focus,
 .form-select:focus,
@@ -387,6 +399,7 @@ input[type="checkbox"]:focus,
     border-color: #4183C4 !important;
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, .075), 0 0 2px #4183C4 !important;
     outline-color: #4183C4 !important;
+    background-color: #011 !important;
 }
 /* inputs */
 
@@ -470,7 +483,7 @@ div[id^="contribution-joined-github"] img {
 }
 .is-stuck .diffbar {
     background: #25272a !important;
-    height: 2.5em;
+    height: 4.25em; /* Presicsely to the file heading. */
     pointer-events: all !important;
 }
 /* User profile: Make the border not cross into the years buttons */
@@ -599,7 +612,9 @@ input.js-site-search-focus {
 }
 .dropdown-menu,
 .word-upload-callout,
-.select-menu-modal {
+.select-menu-modal,
+.SelectMenu-modal
+{
     box-shadow: 0 3px 12px rgba(0, 0, 0, .4) !important;
 }
 .exploregrid-item {
@@ -829,6 +844,7 @@ tr.commit,
 .result-group a,
 .border-wrap,
 .select-menu-item,
+.SelectMenu-item,
 a.feed-icon,
 .session-device,
 .boxed-group-list > li.session-device:hover,
@@ -857,6 +873,13 @@ a.feed-icon,
 .MarketplaceSideNav {
     background: none !important;
 }
+
+/* Drop-down menus exposed padding backround, e.g. PR file picker. */
+.select-menu-item + .semantic-toc-file::after, .semantic-toc-symbol:not(.last-visible)::after {
+    background-color: #000;
+    border-color: #333;
+}
+
 /* remove background gradient */
 
 div#dashboard.dashboard div.news div,
@@ -1124,7 +1147,9 @@ ul.repo-stats li a,
 ul.stats,
 .select-menu-filters,
 .select-menu-item,
+.SelectMenu-item,
 .select-menu-tabs,
+.SelectMenu-tabs,
 .release-list > li,
 .url-box,
 .context-body,
@@ -1374,6 +1399,7 @@ input.subnav-search-input,
 .search-results,
 .select-menu-text-filter:first-child:last-child,
 .select-menu-modal,
+.SelectMenu-modal,
 #gist-form .file .meta,
 .file .meta,
 .file-box .meta,
@@ -1880,6 +1906,9 @@ input[type="text"]:not(.tree-finder-input):not(.js-site-search-focus) {
 .expandable-line-num .diff-expander:hover,
 .select-menu-filters,
 .select-menu-modal,
+.SelectMenu-modal,
+.SelectMenu-item,
+.SelectMenu-tab:not([aria-selected='true']),
 .pagination a,
 .blob-num[colspan],
 .build-status-item,
@@ -2172,6 +2201,14 @@ div#common-issues ul li a:hover,
 .orghead {
     background: #25272a !important;
 }
+
+/* For responsive stuff. */
+@media (min-width: 768px) {
+    .page-responsive .pagehead {
+        background: #25272a !important;
+    }
+}
+
 .explore-signup-entice-inner {
     background: rgba(24, 24, 24, .9) !important;
 }
@@ -2339,7 +2376,9 @@ ul.fieldpills li,
 #issues-dashboard .actions,
 .list-tip a:hover,
 .select-menu-tabs .select-menu-tab.selected,
-.select-menu-tab .selected {
+.select-menu-tab .selected,
+.SelectMenu-tab[aria-selected='true']
+{
     background-color: #333 !important;
     border-color: #484848 !important;
 }
@@ -2751,10 +2790,12 @@ ul.smallnav li a:hover,
     background: #383838 !important;
 }
 
-/* Review comment text */
-.review-comment {
+/* Review comment and timeline comment text */
+.review-comment, .timeline-comment {
     color: #ccc;
 }
+
+
 
 /* PR description */
 td.d-block.comment-body {
@@ -2889,6 +2930,19 @@ a.topic-tag,
 .commit-ref .user {
     color: #6d7c9c !important;
 }
+
+/* Base commit refs that are not master have a different color. */
+span.commit-ref.base-ref a span {
+    color: #aa0;
+    font-weight: bolder;
+}
+
+span.commit-ref.base-ref a[title$="master"] span {
+    color: inherit;
+    font-weight: inherit;
+}
+
+
 .timeline-comment.current-user,
 .github-jobs-promotion p,
 .octotip,
@@ -3131,6 +3185,7 @@ a.filter-item.selected,
 .subnav-item:focus,
 .owner-select-target:hover,
 .owner-select-target:focus,
+.SelectMenu-tab:focus,
 .suggester li.navigation-focus,
 .suggester li.navigation-focus small,
 .intgrs-lstng-categories a:hover,
@@ -3999,6 +4054,12 @@ a.text-inherit,
 .discussion-item-ref-title .title-link:hover .issue-num {
     color: inherit !important;
 }
+
+/* Suggestins panel at bottom, with blue octocat and magnifier. */
+section.mt-lg-9.py-7 {
+    background-color: #333;
+}
+
 /* Alerts and activity, remove background gradient */
 
 .metabox .editable-text:hover,
@@ -4197,7 +4258,6 @@ a.text-red,
 .repo-private-label,
 .gist-secret-label,
 .label-private,
-.stale-files-tab,
 .signed-out-comment,
 .warning,
 .commits-list-item em,
@@ -4205,6 +4265,14 @@ a.text-red,
     background: rgba(51, 34, 17, .4) !important;
     border: 1px solid #542 !important;
     color: #ddd !important;
+}
+.stale-files-tab { /* This button must stand out */
+    background: linear-gradient(#cb4, #72761f) !important;
+    background-color: #cb4 !important;
+    border: 1px solid #542 !important;
+}
+.stale-files-tab a.stale-files-tab-link {
+    color: black !important;
 }
 .warning {
     background: #321 !important;
@@ -5545,6 +5613,22 @@ td.d-block.comment-body {
     border-bottom: 0 !important;
 }
 
+/* Mark build statuese with color in PR list. */
+div.commit-build-statuses a.text-green svg {
+    color: #363;
+}
+
+div.commit-build-statuses a.text-red svg {
+    color: #F33;
+    background-color: #630;
+    box-shadow: 0px 0px 5px 6px #630;
+    border-radius: 12px;
+}
+
+div.commit-build-statuses a.color-yellow-7 svg {
+    color: #a63;
+}
+
 .gh-header-meta {
     line-height: 2.5em; /* Align usernames, etc with text referencing commits.*/
 }
@@ -5991,6 +6075,11 @@ li.contribution .num,
     color: #bbb !important;
 }
 
+.Label.Label--gray {
+    background-color: black;
+    border: solid 1px #066 !important;
+}
+
 /* Make "Outdated" stand out. */
 span.Label[title="Label: Outdated"] {
     font-weight: bold;
@@ -6017,6 +6106,7 @@ span.Label[title="Label: Outdated"] {
 .deployment-status-label,
 .list-group-item .list-group-item-summary a.quiet,
 .select-menu-tabs a,
+.SelectMenu-tab,
 .select-menu-tabs .select-menu-tab-nav,
 .select-menu-item.disabled,
 .select-menu-item.disabled.selected,
@@ -6142,6 +6232,11 @@ body.blog pre > code,
 .blob-code-inner {
     color: #999!important
 }
+
+.pl-token.active, .pl-token:hover { /* Code navigation highlight. */
+    background-color: #033;
+}
+
 .pl-c,
 .pl-c span {
     color: #E28FA0!important;
@@ -6710,4 +6805,5 @@ span.cm-def {
 
 .header {
     background: #34373c !important;
+}
 }
