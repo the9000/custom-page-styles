@@ -916,6 +916,77 @@ form.js-notice-dismiss.rounded-2.mb-4 {
     border: 1px solid #333 !important; /* FIXME: ineffectual. */
 }
 
+
+/* Reviewers sidebar on main page: hide, show on hover. */
+div.gutter-condensed > div.flex-shrink-0.col-3 {
+    /* Undo inherited: */
+    flex: none;
+    /* Apply new */
+    position: fixed;
+    top: 16em; /* Do not obscure top right controls. */
+    left: 0;
+    width: auto; /* Size of the content. */
+    max-width: 4em;
+    max-height: 30em;
+    background: black;
+    padding: 0.5em;
+    border: solid #0cc 1px !important;
+    border-top-right-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+    overflow: hidden;
+    opacity: 0.5;
+    z-index: 10;
+}
+
+div.gutter-condensed > div.flex-shrink-0.col-3 > div#partial-discussion-sidebar {
+    top: 0 !important; /* Undo the sticky state from refined-github. */
+    position: relative;
+}
+
+
+div.gutter-condensed > div.flex-shrink-0.col-3:not(:hover) > div#partial-discussion-sidebar > div > form > div {
+    display: none; /* Hide all but review status in the folded state. */
+}
+
+div.gutter-condensed > div.flex-shrink-0.col-3:not(:hover) > div#partial-discussion-sidebar > div > form > details {
+    display: none; /* Hide all but review status in the folded state. */
+}
+
+div.gutter-condensed > div.flex-shrink-0.col-3:not(:hover) > div#partial-discussion-sidebar > div > form > span > p.mt-2 {
+    display: none; /* Hide notifications in the folded state. */
+}
+
+div.gutter-condensed > div.flex-shrink-0.col-3:not(:hover) > div#partial-discussion-sidebar > div > form > span > p > span {
+    display: none; /* Hide hovercards in the folded state. */
+}
+
+div.gutter-condensed > div.flex-shrink-0.col-3:not(:hover) > div#partial-discussion-sidebar > div > form > span > p > button {
+    display: none !important; /* Hide request buttons in the folded state. */
+}
+
+div.gutter-condensed > div.flex-shrink-0.col-3:not(:hover) > div#partial-discussion-sidebar > div > form > span > p > span.reviewers-status-icon >svg.octicon-shield-lock {
+    display: none !important; /* Hide ownership icons in the folded state. */
+}
+
+div.gutter-condensed > div.flex-shrink-0.col-3:not(:hover) > div#partial-discussion-sidebar > div:not(:first-child) {
+    display: none !important; /* Hide all other details in the folded state. */
+}
+
+div.gutter-condensed > div.flex-shrink-0.col-3:hover {
+    /* The review sidebar takes all vertical space and allows scrolling. */
+    border: solid #066 1px !important;
+    opacity: 1.0;
+    max-width: 60em;
+    max-height: 100%;
+    top: 12em; /* Below PR header. */
+    bottom: 0;
+    overflow-y: auto;
+}
+
+div.gutter-condensed > div.flex-shrink-0.col-3:hover > * {
+    visibility: visible; /* Show all childern in the folded state. */
+}
+
 /* border-radius */
 
 #wrapper,
