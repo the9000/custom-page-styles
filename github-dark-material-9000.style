@@ -6158,6 +6158,17 @@ span.Label[title="Label: Outdated"] {
     background-color: #990 !important;
 }
 
+/* Some syntax highlighting in docs. */
+span.hljs-selector-tag {
+    color: #a96;
+}
+span.hljs-keyword {
+    color: #c75;
+}
+span.hljs-variable {
+    color: #aaa;
+}
+
 /* auto-generated rule for "color: #6a737d" */
 
 .text-gray-light,
