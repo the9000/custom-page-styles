@@ -14,10 +14,13 @@
 /* New responsive containers on some pages */
 .container-lg {
   max-width: 100% !important;
-  padding-right: 30px !important;
-  padding-left: 30px !important;
+  padding-right: 0.5em !important;
+  padding-left: 0.5em !important;
 }
 
+.container-xl {
+  max-width: 100% !important;
+}
 
 /*
  * Profile pages
@@ -58,9 +61,17 @@
 .discussion-sidebar {
   width: 280px !important;
 }
+
+/* Not needed any more.
 .discussion-timeline {
   width: calc(100% - 300px) !important;
 }
+*/
+
+.col-9 { /* Make messages timeline take all the space in the flex. */
+    width: 100%;
+}
+
 /* Undo for profile timeline */
 .contribution-activity-listing .discussion-timeline {
   width: 100% !important;
@@ -111,5 +122,14 @@ button.discussion-sidebar-toggle {
   padding-left: 30px !important;
   padding-right: 30px !important;
 }
+
+/* Notifications: allow long descriptions. */
+.notifications .list-group-item-name {
+    max-width: 100%;
 }
 
+/* Generally off the CSS truncation. XXX */
+.css-truncate .css-truncate-target {
+    max-width: 100%;
+}
+}
