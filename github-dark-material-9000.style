@@ -6146,6 +6146,24 @@ li.contribution .num,
     color: #bbb !important;
 }
 
+/* Notification list. */
+.notifications-list-item:hover {
+    background-color: #000 !important;
+}
+
+.notifications-list-item.notification-unread {
+    background-color: #022;
+}
+
+.notifications-list-item span.Label--outline.bg-blue-light{
+    background-color: #033 !important;
+}
+
+.notifications-list-item span.Label--outline.bg-gray-2{
+    background-color: #333 !important;
+}
+
+
 .Label.Label--gray {
     background-color: black;
     border: solid 1px #066 !important;
